@@ -1,0 +1,224 @@
+:root {
+    --bg-light: #ffffff;
+    --text-primary: #3d3b38; /* Warm dark grey */
+    --text-secondary: #7a736c; /* Soft taupe/grey */
+    
+    /* Button styles */
+    --btn-bg: rgba(255, 255, 255, 0.85);
+    --btn-border: rgba(212, 175, 55, 0.3); /* Subtle gold border */
+    --btn-hover-bg: #ffffff;
+    --btn-hover-border: rgba(212, 175, 55, 0.6);
+    
+    /* Accent glow / ethereal light */
+    --glow-color-1: rgba(255, 235, 133, 0.25); /* Golden heavenly light */
+    --glow-color-2: rgba(200, 235, 255, 0.25); /* Soft serene sky blue */
+    
+    --transition-speed: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    /* Soft clean background that feels like pure light */
+    background: linear-gradient(135deg, #ffffff 0%, #fdfcf9 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Background Glowing Orbs for the "Nova Era" light */
+.bg-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--glow-color-1) 0%, transparent 60%);
+    top: -150px;
+    left: -150px;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.bg-glow.top-right {
+    top: auto;
+    bottom: -150px;
+    left: auto;
+    right: -150px;
+    background: radial-gradient(circle, var(--glow-color-2) 0%, transparent 60%);
+}
+
+.container {
+    width: 100%;
+    max-width: 500px; /* Mobile optimal but looks good on desktop */
+    padding: 3rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 10; /* Above the glow */
+}
+
+/* --- Header & Profile --- */
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+.profile-img-container {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(135deg, rgba(212,175,55,0.7), #ffffff);
+    margin-bottom: 1.2rem;
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #ffffff; /* in case there's transparency */
+}
+
+.profile-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.25rem;
+    color: var(--text-primary);
+}
+
+.profile-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+/* --- Buttons --- */
+.links-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.link-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    padding: 1.1rem 1.5rem;
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    border-radius: 16px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 500;
+    transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    overflow: hidden;
+}
+
+/* Icon positioning */
+.link-icon {
+    font-size: 1.4rem;
+    color: #d4af37; /* Soft gold icon */
+    transition: transform var(--transition-speed) ease;
+    margin-right: 0.8rem;
+}
+
+.link-text {
+    text-align: left;
+    letter-spacing: 0.5px;
+}
+
+/* Hover & Active Effects */
+.link-button:hover {
+    background: var(--btn-hover-bg);
+    border-color: var(--btn-hover-border);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15), 0 5px 10px rgba(0,0,0,0.03);
+}
+
+.link-button:hover .link-icon {
+    transform: scale(1.15); /* little pop on the icon */
+    color: #b59226; /* Slightly deeper gold */
+}
+
+.link-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1);
+}
+
+/* Optional Footer */
+.footer {
+    margin-top: 3.5rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+/* --- Featured Links --- */
+.featured-link {
+    background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(255,255,255,0.9));
+    border-color: rgba(212, 175, 55, 0.6);
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
+    font-weight: 600;
+}
+
+.featured-link:hover {
+    background: linear-gradient(135deg, rgba(212,175,55,0.2), #ffffff);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25);
+}
+
+/* --- Small Links --- */
+.small-links .link-button {
+    padding: 0.9rem 1.2rem;
+    font-size: 0.95rem;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    opacity: 0.9;
+}
+
+.small-links .link-icon {
+    font-size: 1.2rem;
+}
+
+/* Responsive adjustments */
+@media (min-width: 600px) {
+    .container {
+        padding: 4rem 2rem;
+    }
+    .profile-img-container {
+        width: 150px;
+        height: 150px;
+    }
+    .profile-title {
+        font-size: 1.85rem;
+    }
+    .link-button {
+        padding: 1.25rem 1.75rem;
+    }
+    .small-links .link-button {
+        padding: 1rem 1.5rem;
+    }
+}
